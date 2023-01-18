@@ -3,13 +3,13 @@
     static void Main(string[] args)
     {
         //Challenge 1
-        int[][] arr1 = { new int[] { 1, 2 }, new int[] { 2, 1, 5 } };
-        int[] arr1Common = CommonItems(arr1);
+        // int[][] arr1 = { new int[] { 1, 2 }, new int[] { 2, 1, 5 } };
+        // int[] arr1Common = CommonItems(arr1);
         /* write method to print arr1Common */
 
         //Challenge 2
-        int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
-        InverseJagged(arr2);
+        // int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
+        // InverseJagged(arr2);
         /* write method to print arr2 */
 
         //Challenge 3
@@ -18,22 +18,22 @@
         /* write method to print arr3 */
 
         //Challenge 4
-        int[,] arr4 = { { 1, 2, 3 }, { 4, 5, 6 } };
-        int[,] arr4Inverse = InverseRec(arr4);
+        // int[,] arr4 = { { 1, 2, 3 }, { 4, 5, 6 } };
+        // int[,] arr4Inverse = InverseRec(arr4);
         /* write method to print arr4Inverse */
 
         //Challenge 5
-        Demo("hello", 1, 2, "world");
+        // Demo("hello", 1, 2, "world");
 
         //Challenge 6
 
         //Challenge 7
-        string firstName, middleName, lastName;
-        ParseNames("Mary Elizabeth Smith", firstName, middleName, lastName);
-        Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
+        // string firstName, middleName, lastName;
+        // ParseNames("Mary Elizabeth Smith", firstName, middleName, lastName);
+        // Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
 
         //Challenge 8
-        GuessingGame();
+        //GuessingGame();
     }
 
     /*
@@ -42,10 +42,10 @@
     Example: int[][] arr = { new int[] {1, 2}, new int[] {2, 1, 5}}
     Expected result: int[] {1,2} since 1 and 2 are both available in sub arrays.
     */
-    static int[] CommonItems(int[][] jaggedArray)
-    {
+    // static int[] CommonItems(int[][] jaggedArray)
+    // {
 
-    }
+    // }
 
     /* 
     Challenge 2. Inverse the elements of a jagged array.
@@ -64,6 +64,34 @@
      */
     static void CalculateDiff(int[][] jaggedArray)
     {
+        //int[][] newArr = default;
+        bool consecutive = true;
+        int temp = default;
+
+        for (int i = 0; i < jaggedArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < jaggedArray[i].GetLength(0); j++)
+            {
+                Console.WriteLine("indexI" + i);
+                Console.WriteLine("indexJ" + j);
+
+                if (consecutive)
+                {
+                    temp = jaggedArray[i][j];
+                    consecutive = false;
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine(temp - jaggedArray[i][j]);
+                    consecutive = true;
+                }
+
+                //Console.WriteLine(jaggedArray[i][j]);
+            }
+        }
+        //return newArr;
+
 
     }
 
@@ -72,10 +100,10 @@
     For example, given: int[,] arr = {{1,2,3}, {4,5,6}}
     Expected result: {{1,2},{3,4},{5,6}}
      */
-    static int[,] InverseRec(int[,] recArray)
-    {
+    // static int[,] InverseRec(int[,] recArray)
+    // {
 
-    }
+    // }
 
     /* 
     Challenge 5. Write a function that accepts a variable number of params of any of these types: 
@@ -100,14 +128,14 @@
 
     /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
     The names will be returned by using out modifier */
-    static void ParseNames(
-        string input,
-        out string firstName,
-        out string middleName,
-        out string lastName)
-    {
+    // static void ParseNames(
+    //     string input,
+    //     out string firstName,
+    //     out string middleName,
+    //     out string lastName)
+    // {
 
-    }
+    // }
 
     /* Challenge 8. Write a function that does the guessing game. 
     The function will think of a random integer number (lets say within 100) 
