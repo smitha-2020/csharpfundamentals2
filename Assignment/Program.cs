@@ -1,5 +1,6 @@
 ﻿class Program
 {
+
     static void Main(string[] args)
     {
         //Challenge 1
@@ -64,85 +65,85 @@
      */
     static void CalculateDiff(int[][] jaggedArray)
     {
-        //int[][] newArr = default;
-        bool consecutive = true;
+        // int counter2 = default;
+        int[][] jagged = new int[3][];
+        int[] newArr = new int[3];
         int temp = default;
-
+        int prevVal = default;
+        bool consecutiveNumb = default;
         for (int i = 0; i < jaggedArray.GetLength(0); i++)
         {
+            int counter = default;
             for (int j = 0; j < jaggedArray[i].GetLength(0); j++)
             {
-                Console.WriteLine("indexI" + i);
-                Console.WriteLine("indexJ" + j);
-
-                if (consecutive)
+                if (j == 0)
                 {
-                    temp = jaggedArray[i][j];
-                    consecutive = false;
+                    temp = j == 0 ? jaggedArray[i][j] : prevVal;
+                    //Console.WriteLine("temp set to " + temp);
+                    consecutiveNumb = false;
                     continue;
                 }
                 else
                 {
+                    newArr[j] = (temp - jaggedArray[i][j]);
                     Console.WriteLine(temp - jaggedArray[i][j]);
-                    consecutive = true;
+                    temp = jaggedArray[i][j];
+                    consecutiveNumb = true;
+                    counter++;
                 }
-
                 //Console.WriteLine(jaggedArray[i][j]);
             }
         }
-        //return newArr;
-
-
     }
 
-    /* 
-    Challenge 4. Inverse column/row of a rectangular array.
-    For example, given: int[,] arr = {{1,2,3}, {4,5,6}}
-    Expected result: {{1,2},{3,4},{5,6}}
-     */
-    // static int[,] InverseRec(int[,] recArray)
-    // {
+        /* 
+        Challenge 4. Inverse column/row of a rectangular array.
+        For example, given: int[,] arr = {{1,2,3}, {4,5,6}}
+        Expected result: {{1,2},{3,4},{5,6}}
+         */
+        // static int[,] InverseRec(int[,] recArray)
+        // {
 
-    // }
+        // }
 
-    /* 
-    Challenge 5. Write a function that accepts a variable number of params of any of these types: 
-    string, number. 
-    - For strings, join them in a sentence. 
-    - For numbers then sum them up. 
-    - Finally print everything out. 
-    Example: Demo("hello", 1, 2, "world") 
-    Expected result: hello world; 3 */
-    static void Demo()
-    {
+        /* 
+        Challenge 5. Write a function that accepts a variable number of params of any of these types: 
+        string, number. 
+        - For strings, join them in a sentence. 
+        - For numbers then sum them up. 
+        - Finally print everything out. 
+        Example: Demo("hello", 1, 2, "world") 
+        Expected result: hello world; 3 */
+        static void Demo()
+        {
 
+        }
+
+        /* Challenge 6. Write a function to swap 2 objects but only if they are of the same type 
+        and if they’re string, lengths have to be more than 5. 
+        If they’re numbers, they have to be more than 18. */
+        static void SwapTwo()
+        {
+
+        }
+
+        /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
+        The names will be returned by using out modifier */
+        // static void ParseNames(
+        //     string input,
+        //     out string firstName,
+        //     out string middleName,
+        //     out string lastName)
+        // {
+
+        // }
+
+        /* Challenge 8. Write a function that does the guessing game. 
+        The function will think of a random integer number (lets say within 100) 
+        and ask the user to input a guess. 
+        It’ll repeat the asking until the user puts the correct answer. */
+        static void GuessingGame()
+        {
+
+        }
     }
-
-    /* Challenge 6. Write a function to swap 2 objects but only if they are of the same type 
-    and if they’re string, lengths have to be more than 5. 
-    If they’re numbers, they have to be more than 18. */
-    static void SwapTwo()
-    {
-
-    }
-
-    /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
-    The names will be returned by using out modifier */
-    // static void ParseNames(
-    //     string input,
-    //     out string firstName,
-    //     out string middleName,
-    //     out string lastName)
-    // {
-
-    // }
-
-    /* Challenge 8. Write a function that does the guessing game. 
-    The function will think of a random integer number (lets say within 100) 
-    and ask the user to input a guess. 
-    It’ll repeat the asking until the user puts the correct answer. */
-    static void GuessingGame()
-    {
-
-    }
-}
