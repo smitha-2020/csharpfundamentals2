@@ -5,7 +5,7 @@
     {
         //Challenge 1
         int[][] arr1 = { new int[] { 1, 2 }, new int[] { 2, 1, 5 } };
-        int[] arr1Common = CommonItems(ref arr1);
+        int[] arr1Common = CommonItems(ref arr1); //implemented using List and Arrays
         /* write method to print arr1Common */
         for (int s = 0; s < arr1Common.Length; s++)
         {
@@ -13,8 +13,8 @@
         }
 
         //Challenge 2
-        int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } }; //implemented using List
-        InverseJagged(arr2);
+        int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } }; 
+        InverseJagged(arr2); // return type of the method is declared as void,data displayed in the method.
         /* write method to print arr2 */
 
         //Challenge 3
@@ -49,7 +49,7 @@
     */
     static int[] CommonItems(ref int[][] jaggedArray)
     {
-        int[] newArr = new int[2];  
+        int[] newArr = new int[2];  //did not find any other solution as cannot set the array size dynamically.
         List<int> list = new List<int>();
         List<int> resultList = new List<int>();
         int counter = default;
@@ -82,25 +82,27 @@
      */
     static void InverseJagged(int[][] jaggedArray)
     {
-        // int[][] newJagged = new int[jaggedArray.Length][];
-        // for (int i = 0; i < jaggedArray.Length; i++)
-        // {
-        //     for (int j = jaggedArray[i].Length - 1; j < 0; j++)
-        //     {
-        //         Console.WriteLine(jaggedArray[i][j]);
-        //     }
-
-        // }
-        // for (int s = 0; s < newJagged.Length; s++)
-        // {
-        //     for (int m = 0; m < newJagged[s].Length; m++)
-        //     {
-        //         Console.Write($"{newJagged[s][m]} ");
-        //     }
-        //     Console.WriteLine();
-        // }
-
-
+        int counter = default;
+        int[][] jagged = new int[jaggedArray.Length][];
+        for (int i = 0; i < jaggedArray.Length; i++)
+        {
+            counter = jaggedArray[i].Length - 1;
+            int[] newJagged = new int[jaggedArray[i].Length];
+            for (int j = 0; j < jaggedArray[i].Length; j++)
+            {
+                newJagged[counter] = jaggedArray[i][j];
+                counter--;
+            }
+            jagged[i] = newJagged;
+        }
+        for (int s = 0; s < jagged.Length; s++)
+        {
+            for (int m = 0; m < jagged[s].Length; m++)
+            {
+                Console.Write($"{jagged[s][m]} ");
+            }
+            Console.WriteLine();
+        }
     }
 
     /* 
@@ -137,6 +139,18 @@
      */
     // static int[,] InverseRec(int[,] recArray)
     // {
+
+    // int[][]? newJagged = default;
+    //     for (int i = 0; i<jaggedArray.Length; i++)
+    //     {
+    //         for (int j =0;j<jaggedArray[i].Length; j++)
+    //         {
+    //             Console.WriteLine("Hey");
+    //             newJagged = new int[jaggedArray[i].Length][];
+    //             Console.WriteLine(jaggedArray[i][j]);
+    //         }
+
+    //     }
 
     // }
 
