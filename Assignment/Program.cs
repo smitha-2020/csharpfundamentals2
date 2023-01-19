@@ -13,7 +13,7 @@
         }
 
         //Challenge 2
-        int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } }; 
+        int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
         InverseJagged(arr2); // return type of the method is declared as void,data displayed in the method.
         /* write method to print arr2 */
 
@@ -23,9 +23,17 @@
         /* write method to print arr3 */
 
         //Challenge 4
-        // int[,] arr4 = { { 1, 2, 3 }, { 4, 5, 6 } };
-        // int[,] arr4Inverse = InverseRec(arr4);
+        int[,] arr4 = { { 1, 2, 3 }, { 4, 5, 6 } };
+        int[,] arr4Inverse = InverseRec(arr4);
         /* write method to print arr4Inverse */
+        for (int i = 0; i < arr4Inverse.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr4Inverse.GetLength(1); j++)
+            {
+                Console.Write($"{arr4Inverse[i, j]} ");
+            }
+            Console.WriteLine();
+        }
 
         //Challenge 5
         // Demo("hello", 1, 2, "world");
@@ -137,22 +145,32 @@
     For example, given: int[,] arr = {{1,2,3}, {4,5,6}}
     Expected result: {{1,2},{3,4},{5,6}}
      */
-    // static int[,] InverseRec(int[,] recArray)
-    // {
+    static int[,] InverseRec(int[,] recArray)
+    {
+        int[,]? newInversed = new int[recArray.GetLength(1), recArray.GetLength(0)];
+        int counter1 = 0;
+        int counter2 = 0;
+        for (int i = 0; i < recArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < recArray.GetLength(1); j++)
+            {
+                if (counter2 < newInversed.GetLength(1))
+                {
+                    newInversed[counter1, counter2] = recArray[i, j];
+                    counter2++;
+                }
+                else
+                {
+                    counter1++;
+                    counter2 = 0;
+                    newInversed[counter1, counter2] = recArray[i, j];
+                    counter2++;
+                }
+            }
+        }
 
-    // int[][]? newJagged = default;
-    //     for (int i = 0; i<jaggedArray.Length; i++)
-    //     {
-    //         for (int j =0;j<jaggedArray[i].Length; j++)
-    //         {
-    //             Console.WriteLine("Hey");
-    //             newJagged = new int[jaggedArray[i].Length][];
-    //             Console.WriteLine(jaggedArray[i][j]);
-    //         }
-
-    //     }
-
-    // }
+        return newInversed;
+    }
 
     /* 
     Challenge 5. Write a function that accepts a variable number of params of any of these types: 
