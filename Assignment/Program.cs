@@ -36,7 +36,7 @@
         }
 
         //Challenge 5
-        // Demo("hello", 1, 2, "world");
+        Demo("hello", 1, 2, "world");
 
         //Challenge 6
 
@@ -180,8 +180,28 @@
     - Finally print everything out. 
     Example: Demo("hello", 1, 2, "world") 
     Expected result: hello world; 3 */
-    static void Demo()
+    static void Demo(params object[] data)
     {
+        System.Text.StringBuilder builder = new();
+        int sum = 0;
+        for (int i = 0; i < data.Length; i++)
+        {
+            switch (data[i])
+            {
+                case int num when num > 0:
+                    sum = sum + num;
+                    break;
+                case string str when str.Length > 0:
+                    builder.Append($"{str} ");
+                    break;
+                default:
+                    break;
+
+            }
+            //builder.Append($"{data[i]} ");
+        }
+        builder.Append($"; {sum} ");
+        Console.WriteLine(builder.ToString());
 
     }
 
