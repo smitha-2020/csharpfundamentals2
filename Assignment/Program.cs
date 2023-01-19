@@ -1,4 +1,5 @@
-﻿class Program
+﻿#pragma warning disable
+class Program
 {
 
     static void Main(string[] args)
@@ -48,7 +49,7 @@
         Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
 
         //Challenge 8
-        //GuessingGame();
+        GuessingGame();
     }
 
     /*
@@ -230,9 +231,12 @@
     The names will be returned by using out modifier */
     static void ParseNames(string input, out string? firstName, out string? middleName, out string? lastName)
     {
-            firstName = input.Split(' ')[0].Length >0?input.Split(' ')[0]:default;
-            middleName = input.Split(' ')[1].Length >0?input.Split(' ')[0]:default;
-            lastName = input.Split(' ')[2].Length >0?input.Split(' ')[0]:default;
+        checked
+        {
+            firstName = input.Split(' ')[0]?.ToString();
+            middleName = input.Split(' ')[1]?.ToString();
+            lastName = input.Split(' ')[2]?.ToString();
+        }
     }
 
     /* Challenge 8. Write a function that does the guessing game. 
@@ -241,6 +245,36 @@
     It’ll repeat the asking until the user puts the correct answer. */
     static void GuessingGame()
     {
+        try
+        {
+            Random rnd = new Random();
+            int numb = rnd.Next(100);
+            Console.WriteLine(numb); Console.WriteLine("Enter a valid number");
+            int inputdata = default;
+            Console.WriteLine($"Your Entered number is {inputdata}");
+            do
+            {
+                Console.WriteLine("Enter a valid number");
+                //Console.WriteLine(numb);
+                inputdata = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Your Entered number is {inputdata}");
+                if (inputdata == numb)
+                {
+                    Console.WriteLine("Congratulations!! Your have punched in a correct guess!!");
+                }
+            } while (inputdata != numb);
+
+        }
+        // Most specific:
+        catch (ArgumentNullException e)
+        {
+            Console.WriteLine("{0} First exception caught.", e);
+        }
+        // Least specific:
+        catch (Exception e)
+        {
+            Console.WriteLine("{0} Second exception caught.", e);
+        }
 
     }
 }
