@@ -49,7 +49,9 @@ class Program
         Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
 
         //Challenge 8
-        GuessingGame();
+        Random rnd = new Random();
+        int numb = rnd.Next(0, 100);
+        GuessingGame(in numb);
     }
 
     /*
@@ -243,12 +245,12 @@ class Program
     The function will think of a random integer number (lets say within 100) 
     and ask the user to input a guess. 
     It’ll repeat the asking until the user puts the correct answer. */
-    static void GuessingGame()
+    static void GuessingGame(in int numb)
     {
         try
         {
-            Random rnd = new Random();
-            int numb = rnd.Next(0, 100);
+            // Random rnd = new Random();
+            // int numb = rnd.Next(0, 100);
             Console.WriteLine(numb); Console.WriteLine("Enter a valid number");
             int inputdata = default;
             Console.WriteLine($"Your Entered number is {inputdata}");
