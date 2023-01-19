@@ -43,9 +43,9 @@
         SwapTwo(20, 30);
 
         //Challenge 7
-        // string firstName, middleName, lastName;
-        // ParseNames("Mary Elizabeth Smith", firstName, middleName, lastName);
-        // Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
+        string firstName, middleName, lastName;
+        ParseNames("Mary Elizabeth Smith", out firstName, out middleName, out lastName);
+        Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
 
         //Challenge 8
         //GuessingGame();
@@ -228,14 +228,12 @@
 
     /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
     The names will be returned by using out modifier */
-    // static void ParseNames(
-    //     string input,
-    //     out string firstName,
-    //     out string middleName,
-    //     out string lastName)
-    // {
-
-    // }
+    static void ParseNames(string input, out string? firstName, out string? middleName, out string? lastName)
+    {
+            firstName = input.Split(' ')[0].Length >0?input.Split(' ')[0]:default;
+            middleName = input.Split(' ')[1].Length >0?input.Split(' ')[0]:default;
+            lastName = input.Split(' ')[2].Length >0?input.Split(' ')[0]:default;
+    }
 
     /* Challenge 8. Write a function that does the guessing game. 
     The function will think of a random integer number (lets say within 100) 
