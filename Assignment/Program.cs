@@ -248,7 +248,7 @@ class Program
         try
         {
             Random rnd = new Random();
-            int numb = rnd.Next(100);
+            int numb = rnd.Next(0, 100);
             Console.WriteLine(numb); Console.WriteLine("Enter a valid number");
             int inputdata = default;
             Console.WriteLine($"Your Entered number is {inputdata}");
@@ -257,10 +257,15 @@ class Program
                 Console.WriteLine("Enter a valid number");
                 //Console.WriteLine(numb);
                 inputdata = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine($"Your Entered number is {inputdata}");
+
                 if (inputdata == numb)
                 {
                     Console.WriteLine("Congratulations!! Your have punched in a correct guess!!");
+                }
+                else
+                {
+                    var output = (inputdata > numb) ? "Too High!!" : "Too Low";
+                    Console.WriteLine(output);
                 }
             } while (inputdata != numb);
 
