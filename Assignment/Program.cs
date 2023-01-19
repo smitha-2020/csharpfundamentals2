@@ -5,12 +5,16 @@
     {
         //Challenge 1
         int[][] arr1 = { new int[] { 1, 2 }, new int[] { 2, 1, 5 } };
-        int[] arr1Common = CommonItems(arr1);
+        int[] arr1Common = CommonItems(ref arr1);
         /* write method to print arr1Common */
+        for (int s = 0; s < arr1Common.Length; s++)
+        {
+            Console.WriteLine(arr1Common[s]);
+        }
 
         //Challenge 2
-        // int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
-        // InverseJagged(arr2);
+        int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } }; //implemented using List
+        InverseJagged(arr2);
         /* write method to print arr2 */
 
         //Challenge 3
@@ -43,9 +47,31 @@
     Example: int[][] arr = { new int[] {1, 2}, new int[] {2, 1, 5}}
     Expected result: int[] {1,2} since 1 and 2 are both available in sub arrays.
     */
-    static int[] CommonItems(int[][] jaggedArray)
+    static int[] CommonItems(ref int[][] jaggedArray)
     {
-        int[] newArr = new int[jaggedArray.Length - 1];
+        int[] newArr = new int[2];  
+        List<int> list = new List<int>();
+        List<int> resultList = new List<int>();
+        int counter = default;
+        for (int i = 0; i < jaggedArray.Length; i++) //gives number of rows in jagged array
+        {
+            for (int j = 0; j < jaggedArray[i].Length; j++)
+            {
+                list.Add(jaggedArray[i][j]);
+            }
+        }
+        foreach (int element in list)
+        {
+            if (list.IndexOf(element) != list.LastIndexOf(element))
+            {
+                if (!resultList.Contains(element))
+                {
+                    resultList.Add(element);
+                    newArr[counter] = element;
+                    counter++;
+                }
+            }
+        }
         return newArr;
     }
 
@@ -56,6 +82,24 @@
      */
     static void InverseJagged(int[][] jaggedArray)
     {
+        // int[][] newJagged = new int[jaggedArray.Length][];
+        // for (int i = 0; i < jaggedArray.Length; i++)
+        // {
+        //     for (int j = jaggedArray[i].Length - 1; j < 0; j++)
+        //     {
+        //         Console.WriteLine(jaggedArray[i][j]);
+        //     }
+
+        // }
+        // for (int s = 0; s < newJagged.Length; s++)
+        // {
+        //     for (int m = 0; m < newJagged[s].Length; m++)
+        //     {
+        //         Console.Write($"{newJagged[s][m]} ");
+        //     }
+        //     Console.WriteLine();
+        // }
+
 
     }
 
