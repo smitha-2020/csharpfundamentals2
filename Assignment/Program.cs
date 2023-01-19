@@ -39,6 +39,8 @@
         Demo("hello", 1, 2, "world");
 
         //Challenge 6
+        SwapTwo("Hi there!!", "How are you?");
+        SwapTwo(20, 30);
 
         //Challenge 7
         // string firstName, middleName, lastName;
@@ -168,7 +170,6 @@
                 }
             }
         }
-
         return newInversed;
     }
 
@@ -191,26 +192,38 @@
                 case int num when num > 0:
                     sum = sum + num;
                     break;
-                case string str when str.Length > 0:
+                case string str when !string.IsNullOrEmpty(str) && str.Length > 0:
                     builder.Append($"{str} ");
                     break;
                 default:
                     break;
-
             }
             //builder.Append($"{data[i]} ");
         }
         builder.Append($"; {sum} ");
         Console.WriteLine(builder.ToString());
-
     }
 
     /* Challenge 6. Write a function to swap 2 objects but only if they are of the same type 
     and if they’re string, lengths have to be more than 5. 
     If they’re numbers, they have to be more than 18. */
-    static void SwapTwo()
+    static void SwapTwo(params object[] input)
     {
-
+        System.Text.StringBuilder builder = new();
+        switch (input[0])
+        {
+            case int num when num > 18:
+                (input[0], input[1]) = (input[1], input[0]);
+                builder.Append($"{input[0]}  {input[1]}");
+                break;
+            case string str when !string.IsNullOrEmpty(str) && str.Length > 5:
+                (input[0], input[1]) = (input[1], input[0]);
+                builder.Append($"{input[0]}  {input[1]}");
+                break;
+            default:
+                break;
+        }
+        Console.WriteLine(builder.ToString());
     }
 
     /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
