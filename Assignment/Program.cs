@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         //Challenge 1
-        int[][] arr1 = { new int[] { 1, 2 }, new int[] { 2, 1, 5 }};
+        int[][] arr1 = { new int[] { 1, 2, 8 }, new int[] { 2, 1, 5, 8 }, new int[] { 2, 1, 5, 8 } };
         int[] arr1Common = CommonItems(ref arr1); //implemented using List and Arrays
         /* write method to print arr1Common */
         for (int s = 0; s < arr1Common.Length; s++)
@@ -86,10 +86,8 @@ class Program
         //         }
         //     }
         // }
-        //Approach2 with lists
+        //Approach2 with Arrays
         int[] newArr = new int[jaggedArray[0].Length];
-        List<int> list = new List<int>();
-        List<int> resultList = new List<int>();
         int counter = default;
         int j = default;
         int firstArrElement = default;
@@ -98,7 +96,6 @@ class Program
         {
             int[] firstArray = jaggedArray[0];
             j = 1;
-            //Console.WriteLine(j + " " + jaggedArray[j].Length);
             while (j < jaggedArray.Length)
             {
                 for (int z = 0; z < jaggedArray[j].Length; z++)
@@ -261,6 +258,7 @@ class Program
                 builder.Append($"{input[0]}  {input[1]}");
                 break;
             default:
+                builder.Append("Sorry data is niether string nor number");
                 break;
         }
         Console.WriteLine(builder.ToString());
