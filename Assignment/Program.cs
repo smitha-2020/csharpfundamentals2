@@ -202,7 +202,7 @@ class Program
                     counter1++;
                     counter2 = 0;
                     newInversed[counter1, counter2] = recArray[i, j];
-                    
+
                 }
                 counter2++;
             }
@@ -230,7 +230,7 @@ class Program
                     sum = sum + num;
                     break;
                 case string str when !string.IsNullOrEmpty(str) && str.Length > 0:
-                    builder.Append($"{str} ");
+                    builder.Append($" {str}");
                     break;
                 default:
                     break;
@@ -247,13 +247,13 @@ class Program
     static void SwapTwo(params object[] input)
     {
         System.Text.StringBuilder builder = new();
-        switch (input[0],input[1])
+        switch (input[0], input[1])
         {
-            case (int,int)num when ((int)num.Item1>18 && (int)num.Item2>18):
+            case (int, int) num when ((int)num.Item1 > 18 && (int)num.Item2 > 18):
                 (input[0], input[1]) = (input[1], input[0]);
                 builder.Append($"{input[0]}  {input[1]}");
                 break;
-            case (string,string)str when (!string.IsNullOrEmpty((string)str.Item1) && ((string)str.Item1).Length > 5 && !string.IsNullOrEmpty((string)str.Item2) && ((string)str.Item2).Length > 5):
+            case (string, string) str when (!string.IsNullOrEmpty((string)str.Item1) && ((string)str.Item1).Length > 5 && !string.IsNullOrEmpty((string)str.Item2) && ((string)str.Item2).Length > 5):
                 (input[0], input[1]) = (input[1], input[0]);
                 builder.Append($"{input[0]}  {input[1]}");
                 break;
@@ -268,11 +268,29 @@ class Program
     The names will be returned by using out modifier */
     static void ParseNames(string input, out string? firstName, out string? middleName, out string? lastName)
     {
+        firstName = string.Empty;
+        middleName = string.Empty;
+        lastName = string.Empty;
         checked
         {
-            firstName = input.Split(' ')[0]?.ToString();
-            middleName = input.Split(' ')[1]?.ToString();
-            lastName = input.Split(' ')[2]?.ToString();
+            var spaceIndex = input.IndexOf(' ');
+            if (spaceIndex < 0 && !string.IsNullOrEmpty(input))
+            {
+                firstName = input;
+            }
+            else
+            {
+                firstName = input.Substring(0, spaceIndex);
+                var secondPart = input.Substring(firstName.Length + 1);
+                Console.WriteLine(secondPart.IndexOf(' '));
+                if (secondPart.IndexOf(' ') > 0)
+                {
+                    middleName = secondPart.Substring(0, secondPart.IndexOf(' '));
+                    lastName = secondPart.Substring(secondPart.IndexOf(' ') + 1);
+                }else{
+                    lastName = secondPart;
+                }
+            }
         }
     }
 
