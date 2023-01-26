@@ -15,12 +15,12 @@ class Program
 
         //Challenge 2
         int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
-        InverseJagged(ref arr2); // return type of the method is declared as void,data displayed in the method.
+        InverseJagged(arr2); // return type of the method is declared as void,data displayed in the method.
         /* write method to print arr2 */
 
         //Challenge 3
         int[][] arr3 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
-        CalculateDiff(ref arr3); // return type of the method is declared as void,data displayed in the method.
+        CalculateDiff(arr3); // return type of the method is declared as void,data displayed in the method.
         /* write method to print arr3 */
 
         //Challenge 4
@@ -127,7 +127,7 @@ class Program
     For example, int[][] arr = {new int[] {1,2}, new int[]{1,2,3}} 
     Expected result: int[][] arr = {new int[]{2, 1}, new int[]{3, 2, 1}}
      */
-    static void InverseJagged(ref int[][] jaggedArray)
+    static void InverseJagged(int[][] jaggedArray)
     {
         int counter = default;
         int[][] jagged = new int[jaggedArray.Length][];
@@ -157,7 +157,7 @@ class Program
     For example, int[][] arr = {new int[] {1,2}, new int[]{1,2,3}} 
     Expected result: int[][] arr = {new int[] {-1}, new int[]{-1, -1}}
      */
-    static void CalculateDiff(ref int[][] jaggedArray)
+    static void CalculateDiff(int[][] jaggedArray)
     {
         int[][] newJagged = new int[jaggedArray.Length][];
         for (int i = 0; i < jaggedArray.Length; i++)
@@ -196,15 +196,15 @@ class Program
                 if (counter2 < newInversed.GetLength(1))
                 {
                     newInversed[counter1, counter2] = recArray[i, j];
-                    counter2++;
                 }
                 else
                 {
                     counter1++;
                     counter2 = 0;
                     newInversed[counter1, counter2] = recArray[i, j];
-                    counter2++;
+                    
                 }
+                counter2++;
             }
         }
         return newInversed;
@@ -247,13 +247,13 @@ class Program
     static void SwapTwo(params object[] input)
     {
         System.Text.StringBuilder builder = new();
-        switch (input[0])
+        switch (input[0],input[1])
         {
-            case int num when num > 18:
+            case (int,int)num when ((int)num.Item1>18 && (int)num.Item2>18):
                 (input[0], input[1]) = (input[1], input[0]);
                 builder.Append($"{input[0]}  {input[1]}");
                 break;
-            case string str when !string.IsNullOrEmpty(str) && str.Length > 5:
+            case (string,string)str when (!string.IsNullOrEmpty((string)str.Item1) && ((string)str.Item1).Length > 5 && !string.IsNullOrEmpty((string)str.Item2) && ((string)str.Item2).Length > 5):
                 (input[0], input[1]) = (input[1], input[0]);
                 builder.Append($"{input[0]}  {input[1]}");
                 break;
